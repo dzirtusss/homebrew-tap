@@ -1,2 +1,2 @@
-# tap
+# homebrew-tap
 homebrew-tap
