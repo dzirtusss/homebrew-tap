@@ -5,12 +5,12 @@ class Karules < Formula
   sha256 "deccdcc637b274c239df0216130ff0da27ff8d8853a4d2b0fff0def1311b8577"
   license "MIT"
 
-  uses_from_macos "ruby", since: :catalina
+  depends_on "ruby"
 
   def install
     ENV["GEM_HOME"] = libexec
     system "gem", "install", cached_download, "--no-document",
-           "--ignore-dependencies", "--conservative"
+           "--ignore-dependencies"
     bin.install libexec/"bin/karules"
     bin.env_script_all_files(libexec/"bin", GEM_HOME: ENV["GEM_HOME"])
   end
