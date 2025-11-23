@@ -9,13 +9,13 @@ class Karules < Formula
 
   def install
     ENV["GEM_HOME"] = libexec
-    system "gem", "install", cached_download, "--no-document",
-           "--ignore-dependencies"
+    system "gem", "install", cached_download, "--no-document"
     bin.install libexec/"bin/karules"
     bin.env_script_all_files(libexec/"bin", GEM_HOME: ENV["GEM_HOME"])
   end
 
   test do
-    system "#{bin}/karules", "--version"
+    assert_match "karules #{version}", shell_output("#{bin}/karules --version")
+    assert_match "Usage: karules", shell_output("#{bin}/karules --help")
   end
 end
